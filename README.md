@@ -2,6 +2,8 @@
 
 TODO: Write a gem description
 
+![Barb](https://github.com/hundredwatt/barb/raw/master/barb.jpg)
+
 ## Installation
 
 Add this line to your application's Gemfile:
