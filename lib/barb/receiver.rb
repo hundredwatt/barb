@@ -51,15 +51,22 @@ module Barb
     end
 
     def call(env)
-      request = Rack::Request.new(env)
-      env['payload'] =
-        case request.content_type
+      @env = env
+      @request = Rack::Request.new(env)
+      @env['payload'] =
+        case @request.content_type
         when 'application/json'
           JSON.parse(Rack::Request.new(env).body.read)
         else
           nil
         end
+
+      process  if respond_to?(:process)
       empty_response
+    end
+
+    def payload
+      @env['payload']
     end
 
     private
