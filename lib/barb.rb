@@ -1,5 +1,7 @@
 require "barb/version"
 
+require 'rack'
+
 module Barb
-  # Your code goes here...
+  autoload :Receiver, 'barb/receiver'
 end
