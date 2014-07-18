@@ -1,5 +1,6 @@
 require "barb/version"
 
+require 'json'
 require 'rack'
 require 'rack/auth/basic'
 
