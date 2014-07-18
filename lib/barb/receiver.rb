@@ -1,13 +1,11 @@
 module Barb
   class Receiver
+    extend DSL
+
     class << self
       attr_reader :instance
 
       LOCK = Mutex.new
-
-      def basic_auth(&blk)
-        use Rack::Auth::Basic, 'Barb', &blk
-      end
 
       def compile
         @instance ||= new
@@ -50,7 +48,6 @@ module Barb
     end
 
     def intialize
-      @middleware ||= []
     end
 
     def call(env)
