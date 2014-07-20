@@ -1,4 +1,4 @@
-require "barb/version"
+require 'barb/version'
 
 require 'multi_json'
 require 'multi_xml'

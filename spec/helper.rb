@@ -15,5 +15,5 @@ Dir["#{File.dirname(__FILE__)}/support/*.rb"].each do |file|
 end
 
 RSpec.configure do |config|
-    config.include Rack::Test::Methods
+  config.include Rack::Test::Methods
 end

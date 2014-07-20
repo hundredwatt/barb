@@ -1,7 +1,7 @@
 require 'helper'
 
 describe Barb::Config do
-  describe "#basic_auth" do
+  describe '#basic_auth' do
     subject do
       Class.new(Barb::Receiver) do
         basic_auth do |u, p|
@@ -34,6 +34,6 @@ describe Barb::Config do
   end
 
   def encode_basic_auth(username, password)
-    'Basic ' + ["#{username}:#{password}"].pack("m*")
+    'Basic ' + ["#{username}:#{password}"].pack('m*')
   end
 end
