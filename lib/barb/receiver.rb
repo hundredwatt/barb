@@ -12,7 +12,7 @@ module Barb
       @env['payload'] =
         case @request.content_type
         when 'application/json'
-          JSON.parse(Rack::Request.new(env).body.read)
+          MultiJson.load(Rack::Request.new(env).body.read)
         else
           nil
         end

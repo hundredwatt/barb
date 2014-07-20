@@ -1,6 +1,6 @@
 require "barb/version"
 
-require 'json'
+require 'multi_json'
 require 'rack'
 require 'rack/auth/basic'
 
