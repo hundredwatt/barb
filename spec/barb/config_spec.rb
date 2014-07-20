@@ -1,6 +1,6 @@
 require 'helper'
 
-describe Barb::DSL do
+describe Barb::Config do
   describe "#basic_auth" do
     subject do
       Class.new(Barb::Receiver) do

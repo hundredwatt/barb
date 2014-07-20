@@ -1,5 +1,5 @@
 module Barb
-  module DSL
+  module Config
     def basic_auth(&blk)
       use Rack::Auth::Basic, 'Barb', &blk
     end

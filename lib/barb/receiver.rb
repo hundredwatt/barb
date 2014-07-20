@@ -1,7 +1,7 @@
 module Barb
   class Receiver
     extend App
-    extend DSL
+    extend Config
 
     def intialize
     end
