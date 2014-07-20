@@ -13,6 +13,8 @@ module Barb
         case @request.content_type
         when 'application/json'
           MultiJson.load(Rack::Request.new(env).body.read)
+        when 'application/xml', 'text/xml'
+          MultiXml.parse(Rack::Request.new(env).body.read)
         else
           nil
         end

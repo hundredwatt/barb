@@ -31,6 +31,17 @@ describe Barb::Receiver do
         expect(last_request.env['payload']).to eq({ "key" => "value" })
       end
     end
+
+    describe "json payload" do
+      let(:content_type) { 'text/xml' }
+      let(:payload) { '<tag id="1">name</tag>' }
+
+      it "detects json and parses the payload" do
+        post '/', payload, { 'CONTENT_TYPE' => content_type }
+
+        expect(last_request.env['payload']).to eq({"tag" => {"id"=>"1", "__content__"=>"name"}})
+      end
+    end
   end
 
   describe "#process" do
