@@ -1,41 +1,7 @@
 module Barb
   class Receiver
+    extend App
     extend DSL
-
-    class << self
-      attr_reader :instance
-
-      LOCK = Mutex.new
-
-      def compile
-        @instance ||= new
-      end
-
-      def change!
-        @instance = nil
-      end
-
-      def call(env)
-        LOCK.synchronize { compile } unless instance
-        call!(env)
-      end
-
-      def call!(env)
-        @app ||= begin
-          builder.run instance
-          builder.to_app
-        end
-        @app.call(env)
-      end
-
-      def use(*args, &blk)
-        builder.use(*args, &blk)
-      end
-
-      def builder
-        @builder ||= Rack::Builder.new
-      end
-    end
 
     def intialize
     end
@@ -51,12 +17,16 @@ module Barb
           nil
         end
 
-      process  if respond_to?(:process)
+      process if respond_to?(:process)
       empty_response
     end
 
     def payload
       @env['payload']
+    end
+
+    def request
+      @request
     end
 
     private
