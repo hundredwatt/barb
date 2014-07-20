@@ -2,6 +2,7 @@ require "barb/version"
 
 require 'multi_json'
 require 'multi_xml'
+require 'logger'
 require 'rack'
 require 'rack/auth/basic'
 
