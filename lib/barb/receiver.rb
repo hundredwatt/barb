@@ -22,28 +22,18 @@ module Barb
 
       def call!(env)
         @app ||= begin
-          builder = Rack::Builder.new
-
-          [*@middleware].each do |m|
-            m = m.dup
-            block = m.pop if m.last.is_a?(Proc)
-            if block
-              builder.use(*m, &block)
-            else
-              builder.use(*m)
-            end
-          end
           builder.run instance
           builder.to_app
         end
         @app.call(env)
       end
 
-      def use(middleware, *args, &blk)
-        m = [middleware, *args]
-        m << blk if block_given?
-        @middleware ||= []
-        @middleware << m
+      def use(*args, &blk)
+        builder.use(*args, &blk)
+      end
+
+      def builder
+        @builder ||= Rack::Builder.new
       end
     end
 
